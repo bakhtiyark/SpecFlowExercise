@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
 using SpecFlowAutomation.Base;
 using SpecFlowAutomation.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using TechTalk.SpecFlow;
 
@@ -22,29 +18,30 @@ namespace SpecFlowAutomation.Steps
             context = injectedContext;
         }
 
-        [Given(@"I open official SpecFlow web site")]
+        [Given("I open official SpecFlow web site")]
         public void OpenOfficialSpecFlowWebSite()
         {
             HomePage.Instance.OpenSpecFlowHomePage();
         }
 
-        [When(@"I hover the '(.*)' menu item from the main menu")]
-        public void HoverTheMenuItemFromTheMainMenu(string menuItem)
+        [When("I hover the Docs menu item from the main menu while I click SpecFlow option from the main menu")]
+        public void HoverTheMenuItemFromTheMainMenu()
         {
             Thread.Sleep(2000);
-            HomePage.Instance.HoverMainMenuItem(menuItem);
+            HomePage.Instance.HoverMainMenuItem("Docs");
+            HomePage.Instance.ClickSubMenuItem("SpecFlow");
+        }
+        
+        [When(@"i enter Installation into the search field")]
+        public void WhenIEnterInstallationIntoTheSearchField()
+        {
+            HomePage.Instance.SearchForItem("installation");
         }
 
-        [When(@"I click '(.*)' option from the main menu")]
-        public void ClickOptionFromTheMainMenu(string option)
+        [Then("Page with Installation title should be opened")]
+        public void PageWithTitleShouldBeOpened()
         {
-            HomePage.Instance.ClickSubMenuItem(option);
-        }
-
-        [Then(@"Page with '(.*)' title should be opened")]
-        public void PageWithTitleShouldBeOpened(string title)
-        {
-            Assert.IsTrue(BasePage.Instance.IsPageTitleDisplayed(title), "Page title for the page is not displayed");
+            Assert.That(BasePage.Instance.GetPageTitle(), Does.Contain("Installation"));
         }
 
         [AfterScenario]

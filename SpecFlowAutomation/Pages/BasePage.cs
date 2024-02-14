@@ -8,9 +8,9 @@ namespace SpecFlowAutomation.Pages
 {
     public class BasePage
     {
-        private string TitleXPath => "//h2[text()='{0}']";
-       
-        public BasePage()
+        private string TitleXPath => "//h1";
+
+        protected BasePage()
         {
 
         }
@@ -34,9 +34,9 @@ namespace SpecFlowAutomation.Pages
             return wait.Until(d => DriverManager.Instance().FindElement(locator).Displayed);
         }
 
-        public bool IsPageTitleDisplayed(string pageTitle) 
+        public string GetPageTitle()
         {
-            return IsDisplayed(By.XPath(string.Format(TitleXPath, pageTitle)));
+            return DriverManager.Instance().FindElement(By.XPath(TitleXPath)).Text;
         }
     }
 }
