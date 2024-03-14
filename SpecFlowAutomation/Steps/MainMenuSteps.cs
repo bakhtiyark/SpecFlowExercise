@@ -9,9 +9,7 @@ namespace SpecFlowAutomation.Steps
     [Binding]
     public sealed class MainMenuSteps
     {
-       // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
-        private readonly ScenarioContext context;
+       private readonly ScenarioContext context;
 
         public MainMenuSteps(ScenarioContext injectedContext)
         {

@@ -1,12 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using SpecFlowAutomation.Base;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using SpecFlowAutomation.Base;
+
 
 namespace SpecFlowAutomation.Pages
 {
@@ -42,9 +38,10 @@ namespace SpecFlowAutomation.Pages
             searchFormInput.Click();
             searchFormField = FindElement(By.CssSelector("input[placeholder=\"Search ...\"]"));
             searchFormField.SendKeys(item);
-            Thread.Sleep(2000);
+            if (!IsDisplayed(By.Id("hit__1"))) return;
             var searchResult = FindElement(By.Id("hit__1"));
             searchResult.Click();
+
         }
 
     }
