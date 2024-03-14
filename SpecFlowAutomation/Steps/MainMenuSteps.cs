@@ -9,7 +9,7 @@ namespace SpecFlowAutomation.Steps
     [Binding]
     public sealed class MainMenuSteps
     {
-       private readonly ScenarioContext context;
+        private readonly ScenarioContext context;
 
         public MainMenuSteps(ScenarioContext injectedContext)
         {
@@ -29,7 +29,7 @@ namespace SpecFlowAutomation.Steps
             HomePage.Instance.HoverMainMenuItem("Docs");
             HomePage.Instance.ClickSubMenuItem("SpecFlow");
         }
-        
+
         [When(@"i enter Installation into the search field")]
         public void WhenIEnterInstallationIntoTheSearchField()
         {
@@ -47,6 +47,5 @@ namespace SpecFlowAutomation.Steps
         {
             DriverManager.QuitDriver();
         }
-
     }
 }
