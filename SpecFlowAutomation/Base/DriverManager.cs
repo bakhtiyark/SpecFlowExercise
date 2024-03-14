@@ -17,9 +17,10 @@ namespace SpecFlowAutomation.Base
                 driver.Value.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(30));
                 driver.Value.Manage().Window.Maximize();
             }
+
             return driver.Value;
         }
-  
+
         public static void QuitDriver()
         {
             Instance().Quit();

@@ -1,10 +1,10 @@
 ﻿namespace SpecFlowAutomation.Pages
 {
     public class GettingStartedPage : BasePage
-    {      
+    {
+        private static GettingStartedPage _gettingStartedPage;
 
-        private static GettingStartedPage gettingStartedPage;
-        public static GettingStartedPage Instance => gettingStartedPage ?? (gettingStartedPage = new GettingStartedPage());
-
+        public new static GettingStartedPage Instance =>
+            _gettingStartedPage ?? (_gettingStartedPage = new GettingStartedPage());
     }
 }

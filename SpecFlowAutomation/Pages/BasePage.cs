@@ -12,7 +12,6 @@ namespace SpecFlowAutomation.Pages
 
         protected BasePage()
         {
-
         }
 
         private static BasePage basePage;

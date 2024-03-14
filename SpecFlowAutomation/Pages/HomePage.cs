@@ -8,16 +8,17 @@ namespace SpecFlowAutomation.Pages
 {
     public class HomePage : BasePage
     {
-        private string URL => "https://specflow.org";
-        
-        private static HomePage homePage;
-        public static HomePage Instance => homePage ?? (homePage = new HomePage());
+        private string Url => "https://specflow.org";
 
-        private IWebElement searchFormInput;
-        private IWebElement searchFormField;
+        private static HomePage _homePage;
+        public new static HomePage Instance => _homePage ?? (_homePage = new HomePage());
+
+        private IWebElement _searchFormInput;
+        private IWebElement _searchFormField;
+
         public void OpenSpecFlowHomePage()
         {
-            DriverManager.Instance().Navigate().GoToUrl(URL);
+            DriverManager.Instance().Navigate().GoToUrl(Url);
         }
 
         public void HoverMainMenuItem(string item)
@@ -32,17 +33,16 @@ namespace SpecFlowAutomation.Pages
             var subMenuItem = FindElements(By.Id("menu-item-1067")).First(x => x.Text.Equals(item));
             subMenuItem.Click();
         }
+
         public void SearchForItem(string item)
         {
-            searchFormInput = FindElement(By.Name("q"));
-            searchFormInput.Click();
-            searchFormField = FindElement(By.CssSelector("input[placeholder=\"Search ...\"]"));
-            searchFormField.SendKeys(item);
+            _searchFormInput = FindElement(By.Name("q"));
+            _searchFormInput.Click();
+            _searchFormField = FindElement(By.CssSelector("input[placeholder=\"Search ...\"]"));
+            _searchFormField.SendKeys(item);
             if (!IsDisplayed(By.Id("hit__1"))) return;
             var searchResult = FindElement(By.Id("hit__1"));
             searchResult.Click();
-
         }
-
     }
 }
